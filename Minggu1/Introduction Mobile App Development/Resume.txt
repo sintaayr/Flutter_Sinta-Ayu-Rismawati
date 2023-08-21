@@ -1,0 +1,6 @@
+Resume Materi KMFlutter – Introduction Mobile App Development
+
+Tiga poin yang dipelajari pada materi ini yaitu :
+1. Pengertian software
+2. Jenis software yang terdiri dari WEBB,Desktop, Mobile
+3. Alur pengembangan software beserta perbedaan compiler dan interpreter
