@@ -28,13 +28,13 @@ class Mobil {
 }
 
 void main() {
-  Mobil mobil = Mobil(800.0); // Kapasitas mobil 1000 kg
+  Mobil mobil = Mobil(800.0); 
 
-  Hewan kerbau = Hewan(300.0); // Berat kucing 5 kg
-  Hewan kambing = Hewan(10.0); // Berat anjing 10 kg
-  Hewan sapi = Hewan(500.0); // Berat sapi 500 kg
+  Hewan kerbau = Hewan(300.0); 
+  Hewan kambing = Hewan(10.0); 
+  Hewan sapi = Hewan(500.0);
 
-  mobil.tambahMuatan(kerbau); // Berhasil ditambahkan ke muatan
-  mobil.tambahMuatan(kambing); // Berhasil ditambahkan ke muatan
-  mobil.tambahMuatan(sapi); // Kapasitas muatan mobil tidak mencukupi
+  mobil.tambahMuatan(kerbau); 
+  mobil.tambahMuatan(kambing); 
+  mobil.tambahMuatan(sapi); 
 }
