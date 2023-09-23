@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 
 class FilePickerWidget extends StatefulWidget {
-  const FilePickerWidget({super.key});
+  final Function(FilePickerResult?) onFileSelected;
+  const FilePickerWidget({super.key, required this.onFileSelected});
 
   @override
   State<FilePickerWidget> createState() => _FilePickerWidgetState();
@@ -11,6 +12,7 @@ class FilePickerWidget extends StatefulWidget {
 
 class _FilePickerWidgetState extends State<FilePickerWidget> {
   FilePickerResult? result;
+  FilePickerResult? result2;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,6 +46,7 @@ class _FilePickerWidgetState extends State<FilePickerWidget> {
       _openFile(result!.files.first);
     }
     setState(() {});
+    widget.onFileSelected(result);
   }
 
   void _openFile(PlatformFile file) {
