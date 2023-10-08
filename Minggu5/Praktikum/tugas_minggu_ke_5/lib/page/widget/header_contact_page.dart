@@ -37,7 +37,7 @@ class HeaderContactPage extends StatelessWidget {
             height: 16,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Divider(
               color: ThemeColor().m3SysLightPurple80,
             ),

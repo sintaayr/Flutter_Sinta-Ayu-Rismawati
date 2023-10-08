@@ -28,6 +28,7 @@ class _ContactPageState extends State<ContactPage> {
         _nameValue = "";
         _phoneValue = "";
       });
+      // ignore: avoid_print
       print(contacts);
       _nameController.clear();
       _phoneController.clear();

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: prioritas1(),
+      home: Prioritas1(),
       // home: prioritas2(),
     );
   }

@@ -47,6 +47,7 @@ class _ContactPageState extends State<ContactPage> {
         _nameValue = "";
         _phoneValue = "";
       });
+      // ignore: avoid_print
       print(contacts);
       _nameController.clear();
       _phoneController.clear();
@@ -105,11 +106,13 @@ class _ContactPageState extends State<ContactPage> {
             keyboardType: TextInputType.number,
           ),
           DatePickerWidget(onDateSelected: (DateTime selectedDate) {
+            // ignore: avoid_print
             print("Tanggal yang dipilih: $selectedDate");
             _selectedDate = selectedDate;
           }),
           ColorPickerWidget(
             onColorSelected: (Color color) {
+              // ignore: avoid_print
               print("warna yang dipilih : $color");
               _selectedColor = color;
             },
@@ -118,6 +121,7 @@ class _ContactPageState extends State<ContactPage> {
             onFileSelected: (FilePickerResult? result) {
               // print("file yang dipilih : $result2");
               _selectedFile = result;
+              // ignore: avoid_print
               print("file yang dipilih : $result");
             },
           ),

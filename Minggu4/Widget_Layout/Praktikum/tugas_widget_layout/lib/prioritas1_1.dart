@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class prioritas1 extends StatelessWidget {
-  const prioritas1({Key? key}) : super(key: key);
+class Prioritas1 extends StatelessWidget {
+  const Prioritas1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
