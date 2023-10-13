@@ -2,7 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas_advance_form/page/widget/color_picker.dart';
 import 'package:tugas_advance_form/page/widget/date_picker.dart';
-import 'package:tugas_advance_form/page/widget/file_picker.dart';
+import 'package:tugas_advance_form/page/widget/file_picker.dart'; 
 import 'package:tugas_advance_form/page/widget/header_contact_page.dart';
 import '../theme/theme_color_style.dart';
 import '../theme/theme_text_style.dart';
