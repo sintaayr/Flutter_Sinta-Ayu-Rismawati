@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theme/color_style.dart';
-import '../theme/text_style.dart';
+// import '../theme/color_style.dart';
+// import '../theme/text_style.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String title;
@@ -21,12 +21,12 @@ class ButtonWidget extends StatelessWidget {
         children: [
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: ThemeColor().m3SysLightPurple,
+                // backgroundColor: ThemeColor().m3SysLightPurple,
               ),
               onPressed: onPressed,
               child: Text(
                 title,
-                style: ThemeTextStyle().m3LabelLarge,
+                // style: ThemeTextStyle().m3LabelLarge,
               )),
         ],
       ),

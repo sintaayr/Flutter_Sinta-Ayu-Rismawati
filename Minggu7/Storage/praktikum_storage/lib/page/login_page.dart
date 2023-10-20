@@ -66,6 +66,7 @@ class _FormLoginPageState extends State<HalamanLogin> {
                 await SharedPreference().simpanUsername(usernameValue);
                 await SharedPreference().simpanPassword(passwordValue);
 
+                // ignore: use_build_context_synchronously
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(

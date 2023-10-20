@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../provider/contact_page_provider.dart';
-import '../theme/color_style.dart';
-import '../theme/text_style.dart';
+import 'package:storage_prioritas_1_dan_2/model/contact_data_model.dart';
+import 'package:storage_prioritas_1_dan_2/provider/db_manager.dart';
 import '../utils/shared_preference.dart';
 import '../widget/button_widget.dart';
 import '../widget/text_field_widget.dart';
 import 'login_page.dart';
 import 'widget/header_contact_page.dart';
+import 'widget/list_contact.dart';
 
 class ContactPage extends StatefulWidget {
-  const ContactPage({super.key});
+  final bool? isEdit;
+  final ContactDataModel? contactDataModel;
+
+  const ContactPage({super.key, this.isEdit, this.contactDataModel});
 
   @override
   State<ContactPage> createState() => _ContactPageState();
@@ -18,6 +21,10 @@ class ContactPage extends StatefulWidget {
 
 class _ContactPageState extends State<ContactPage> {
   final _usernameController = TextEditingController();
+  final _phoneController = TextEditingController();
+
+  String nameValue = "";
+  String phoneValue = "";
 
   void load() async {
     _usernameController.text = await SharedPreference().readUsername();
@@ -31,15 +38,23 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   @override
+  void dispose() {
+    _usernameController.dispose();
+    _phoneController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final contactProvider = Provider.of<ContactPageProvider>(context);
+    // final contactProvider = Provider.of<ContactPageProvider>(context);
+    // final dbManager = Provider.of<DbManager>(context);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 236, 167, 248),
-        title: Text(
+        title: const Text(
           "Contact",
-          style: ThemeTextStyle().m3DisplayLarge,
+          // style: ThemeTextStyle().m3DisplayLarge,
         ),
         centerTitle: true,
       ),
@@ -50,8 +65,8 @@ class _ContactPageState extends State<ContactPage> {
             label: "Name",
             hintText: "Insert Your Name",
             onChanged: (val) {
-              contactProvider.nameValue = val;
-              contactProvider.nameController = _usernameController;
+              nameValue = val;
+              setState(() {});
             },
             controller: _usernameController,
             keyboardType: TextInputType.text,
@@ -60,90 +75,41 @@ class _ContactPageState extends State<ContactPage> {
             label: "Nomor",
             hintText: "+62 ....",
             onChanged: (val) {
-              contactProvider.phoneValue = val;
+              phoneValue = val;
+              setState(() {});
             },
-            controller: contactProvider.phoneController,
+            controller: _phoneController,
             keyboardType: TextInputType.number,
           ),
           const SizedBox(
             height: 20,
           ),
           ButtonWidget(
-              title: "Submit",
-              onPressed: contactProvider.nameValue.isNotEmpty &&
-                      contactProvider.phoneValue.isNotEmpty
+              title: "Simpan",
+              onPressed: nameValue.isNotEmpty && phoneValue.isNotEmpty
                   ? () {
-                      if (contactProvider.selectedIndex == -1) {
-                        contactProvider.addContact();
+                      if (widget.isEdit == true) {
+                        Provider.of<DbManager>(context, listen: false)
+                            .updateContact(
+                          ContactDataModel(name: nameValue, phone: phoneValue),
+                        );
                       } else {
-                        contactProvider
-                            .updateContact(contactProvider.selectedIndex);
+                        Provider.of<DbManager>(context, listen: false)
+                            .addContact(
+                          ContactDataModel(name: nameValue, phone: phoneValue),
+                        );
                       }
                     }
                   : null),
           const SizedBox(
             height: 49,
           ),
-          Text(
+          const Text(
             "List Contact",
-            style: ThemeTextStyle().m3HeadLineSmall,
+            // style: ThemeTextStyle().m3HeadLineSmall,
             textAlign: TextAlign.center,
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: contactProvider.contacts.length,
-            itemBuilder: (context, index) {
-              return Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: ThemeColor().m3SysyLightPurple90,
-                      child: Text(
-                        "A",
-                        style: TextStyle(color: ThemeColor().m3SysDarkPurple),
-                      ),
-                    ),
-                    title: Text(
-                      contactProvider.contacts[index]["title"] ?? "",
-                      style: ThemeTextStyle().m3BodyLarge,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          contactProvider.contacts[index]["subtitle"] ?? "",
-                          style: ThemeTextStyle().m3BodySmall,
-                        ),
-                      ],
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            contactProvider.nameController.text =
-                                contactProvider.contacts[index]["title"]!;
-                            contactProvider.phoneController.text =
-                                contactProvider.contacts[index]["subtitle"]!;
-                            contactProvider.selectedIndex = index;
-                          },
-                          icon: const Icon(Icons.edit),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              contactProvider.contacts.removeAt(index);
-                            });
-                          },
-                          icon: const Icon(Icons.delete),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
+          const ListContact(),
           const SizedBox(
             height: 30,
           ),

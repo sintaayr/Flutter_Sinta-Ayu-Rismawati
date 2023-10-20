@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theme/color_style.dart';
-import '../theme/text_style.dart';
+// import '../theme/color_style.dart';
+// import '../theme/text_style.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final String label;
@@ -16,7 +16,8 @@ class TextFieldWidget extends StatefulWidget {
     required this.hintText,
     required this.onChanged,
     String? errorText,
-    required this.controller, required this.keyboardType,
+    required this.controller,
+    required this.keyboardType,
   });
 
   @override
@@ -24,7 +25,6 @@ class TextFieldWidget extends StatefulWidget {
 }
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,9 +37,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       child: TextFormField(
         decoration: InputDecoration(
             filled: true,
-            fillColor: ThemeColor().m3SysLightPurple70,
-            labelStyle: ThemeTextStyle().m3BodySmall,
-            hintStyle: ThemeTextStyle().m3BodyLarge,
+            // fillColor: ThemeColor().m3SysLightPurple70,
+            // labelStyle: ThemeTextStyle().m3BodySmall,
+            // hintStyle: ThemeTextStyle().m3BodyLarge,
             label: Text(
               widget.label,
             ),
