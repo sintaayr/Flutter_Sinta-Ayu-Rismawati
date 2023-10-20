@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storage_prioritas_1_dan_2/provider/db_manager.dart';
 
+import '../../provider/contact_page_provider.dart';
 
 class ListContact extends StatefulWidget {
   const ListContact({super.key});
@@ -33,11 +34,29 @@ class _ListContactState extends State<ListContact> {
                   ),
                   title: Text(data.name ?? "-"),
                   subtitle: Text(data.phone?.toString() ?? "-"),
-                  trailing: IconButton(
-                    onPressed: () {
-                      dbManager.deleteContact(data.name ?? "");
-                    },
-                    icon: const Icon(Icons.delete),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Consumer<ContactPageProvider>(
+                          builder: (context, contactPageProvider, child) {
+                        return IconButton(
+                          onPressed: () {
+                            contactPageProvider.nameController.text = data.name ?? "";
+                            contactPageProvider.phoneController.text = data.phone ?? "";
+                            contactPageProvider.nameValue = data.name ?? "";
+                            contactPageProvider.phoneValue = data.phone ?? "";
+                            contactPageProvider.isEdit = true;
+                          },
+                          icon: const Icon(Icons.edit),
+                        );
+                      }),
+                      IconButton(
+                        onPressed: () {
+                          dbManager.deleteContact(data.name ?? "");
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                    ],
                   ),
                 );
               },

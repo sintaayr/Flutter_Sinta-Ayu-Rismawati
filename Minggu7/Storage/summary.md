@@ -49,3 +49,30 @@ B. Implementasi Penyimpanan Lokal
             sqflite: ^2.0.2
             path: ^1.8.0
         - SQLite adalah database open source yang mendukung isert, read, update dan remove data.
+        - Implementasi : 
+            a.) Buat model data , ex :
+                class ContactDataModel {
+                    String? name;
+                    String? phone;
+
+                    ContactDataModel({
+                        required this.name,
+                        required this.phone,
+                    });
+
+                    Map<String, dynamic> toMap(){
+                        return{
+                            'name' : name,
+                            'phone' : phone
+                        };
+                    }
+
+                    ContactDataModel.fromMap(Map<String, dynamic> map){
+                        name = map['name'];
+                        phone = map['phone'];
+                    }
+                }
+            b.) Buat database_helper dimana didalamnya terdapa method dengan sintaks untuk create, read, update dan delete data. contohnya dapat dilihat pada file database_helper.dart
+
+            c.) Buat provider untuk memanggil method-method yang telah dibuat pada database-helper agar dapat dipanggil pada halaman lain ketika terjadi interaksi user. contohnya dapat dilihat pada db_manager.dart
+                
