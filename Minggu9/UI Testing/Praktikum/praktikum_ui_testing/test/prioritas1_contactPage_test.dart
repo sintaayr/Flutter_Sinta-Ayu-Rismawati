@@ -142,6 +142,7 @@ void main() {
     expect(find.widgetWithText(TextField, "sinta"), findsOneWidget);
   });
 
+// MASIH FAIL
   //  testWidgets('Test Submit Button Functionality', (WidgetTester tester) async {
 
   //   await tester.pumpWidget(const MaterialApp(home: ContactPage(),),);
@@ -165,25 +166,4 @@ void main() {
   //   expect(find.widgetWithIcon(ListTile, Icons.delete), findsOneWidget);
   //   expect(find.widgetWithIcon(ListTile, Icons.edit), findsOneWidget);
   // });
-
-// testWidgets('ListView.builder should display contacts', (WidgetTester tester) async {
-
-//     final List<Map<String, String>> exampleContacts = [
-//       {"title": "John", "subtitle": "+123-456"},
-//       {"title": "Jane", "subtitle": "+187-654"},
-//     ];
-
-//     await tester.pumpWidget(const ContactPage());
-
-//     expect(find.byType(ListTile), findsNWidgets(exampleContacts.length));
-
-//     for (int i = 0; i < exampleContacts.length; i++) {
-//       final contact = exampleContacts[i];
-//       final titleFinder = find.widgetWithText(ListTile, contact["title"] ?? "");
-//       final subtitleFinder = find.widgetWithText(ListTile, contact["subtitle"] ?? "");
-
-//       expect(titleFinder, findsOneWidget);
-//       expect(subtitleFinder, findsOneWidget);
-//     }
-// });
 }

@@ -1,42 +1,17 @@
-import 'package:code_competence_weekly_one/contact_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:praktikum_ui_testing/page/contact_page(2).dart';
 
 void main() {
   testWidgets('Test contact page', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+    await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
     expect(find.text("Code Competence Weekly 1"), findsOneWidget);
     expect(find.text('Contact Us'), findsOneWidget);
-
-    // await tester.enterText(find.byKey(const Key('firstname')), 'Sinta');
-    // await tester.enterText(find.byKey(const Key('lastname')), 'Ayu');
-    // await tester.enterText(
-    //     find.byKey(const Key('email')), 'sintaayr03@gmail.com');
-    // await tester.enterText(find.byKey(const Key('message')), 'test');
-
-    // // Tekan tombol "Submit"
-    // await tester.press(find.byKey(const Key('submit')));
-    // await tester.pump();
-
-    // expect(find.text('Contact Information'),
-    //     findsOneWidget); // Memeriksa apakah dialog "Contact Information" muncul
-
-    // // Periksa apakah data yang dimasukkan sesuai dengan yang diharapkan di dalam dialog
-    // expect(find.text('First Name : Sinta'), findsOneWidget);
-    // expect(find.text('Last name : Ayu'), findsOneWidget);
-    // expect(find.text('Email : sintaayr03@gmail.com'), findsOneWidget);
-    // expect(find.text('Message : test'), findsOneWidget);
   });
 
-  // testWidgets("cek desc", (tester) async{
-  //   await tester.pumpWidget(const MaterialApp(home: ContactPage()));
-
-  //   expect(find.text('Need to get in touch with us? Either fill out the form with your inquiry or find the '), findsOneWidget);
-  // });
-
   testWidgets("label tiap textfield sesuai", (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+    await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
     expect(find.text('First name*'), findsOneWidget);
     expect(find.text('Last name'), findsOneWidget);
@@ -45,7 +20,7 @@ void main() {
   });
 
   testWidgets("hint text pada setiap textfield telah sesuai", (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+    await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
     expect(find.text('Input first name'), findsOneWidget);
     expect(find.text('Input last name'), findsOneWidget);
@@ -54,13 +29,13 @@ void main() {
   });
 
   testWidgets("button dengan submit", (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+    await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
     expect(find.widgetWithText(ElevatedButton, 'Submit'), findsOneWidget);
   });
 
   testWidgets("dekripsi sesuai", (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+    await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
     final richTextFinder = find.byKey(const Key('RichText'));
     final richTextWidget = tester.widget(richTextFinder) as RichText;
@@ -79,13 +54,13 @@ void main() {
     expect(richTextText2, contains("you'd like to contact below."));
   });
 
+// MASIH FAIL
   // testWidgets("Show dialog saat button di klik", (tester) async {
-  //   await tester.pumpWidget(const MaterialApp(home: ContactPage()));
+  //   await tester.pumpWidget(const MaterialApp(home: ContactPage2()));
 
   //   await tester.press(find.byKey(const Key('submit')));
   //   await tester.pump();
 
   //   expect(find.byKey(const Key('dialog')), findsOneWidget);
-
   // });
 }
