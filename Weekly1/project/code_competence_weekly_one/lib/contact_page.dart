@@ -26,7 +26,7 @@ class _ContactPageState extends State<ContactPage> {
         backgroundColor: Colors.blue,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
         child: ListView(
           children: [
             const Center(
@@ -42,6 +42,7 @@ class _ContactPageState extends State<ContactPage> {
               height: 40,
             ),
             RichText(
+              key: const Key('RichText'),
               textAlign: TextAlign.justify,
               text: const TextSpan(
                 text:
@@ -62,7 +63,7 @@ class _ContactPageState extends State<ContactPage> {
               ),
             ),
             const SizedBox(
-              height: 80,
+              height: 40,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,6 +75,7 @@ class _ContactPageState extends State<ContactPage> {
                     SizedBox(
                       width: 150,
                       child: TextField(
+                        key: const Key('fisrtname'),
                         controller: firstNameController,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -92,6 +94,7 @@ class _ContactPageState extends State<ContactPage> {
                     SizedBox(
                       width: 150,
                       child: TextField(
+                        key: const Key('lastname'),
                         controller: lastNameController,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -110,6 +113,7 @@ class _ContactPageState extends State<ContactPage> {
               children: [
                 const Text('Email*'),
                 TextField(
+                  key: const Key('email'),
                   controller: emailController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'Input email'),
@@ -125,12 +129,12 @@ class _ContactPageState extends State<ContactPage> {
               children: [
                 const Text('What can we help you with?'),
                 TextField(
+                  key: const Key('message'),
                   controller: messageController,
                   keyboardType: TextInputType.multiline,
                   maxLines: 3,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
+                      border: OutlineInputBorder(), hintText: "Type here"),
                 )
               ],
             ),
@@ -142,6 +146,7 @@ class _ContactPageState extends State<ContactPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ElevatedButton(
+                  key: const Key("submit"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     shape: RoundedRectangleBorder(
@@ -154,6 +159,7 @@ class _ContactPageState extends State<ContactPage> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
+                            key: const Key('dialog'),
                             contentPadding: const EdgeInsets.all(20.0),
                             title: const Text('Contact Information'),
                             content: IntrinsicHeight(
