@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../class_imageItem.dart';
 
+
 class ContactPageProvider with ChangeNotifier {
   String _nameValue = "";
   String _phoneValue = "";
