@@ -18,6 +18,29 @@ Summary Materi MVVM
     --- Contact
         --- contact_screen.dart
         --- contact_view_model.dart
+
+* struktur mvvm 
+    1. Model (bentuk data yang digunakan)
+        Ex :
+        class Contact {
+            final String name;
+            final String phone;
+
+            Contact({
+                required this.name,
+                required this.phone,
+            });
+        }
+
+
+    2. UI dan logic :
+        - View (UI)
+            Ex : 
+            ![Alt text](image.png)
+
+        - View Model (Logic)
+            Ex : 
+            ![Alt text](image-1.png)
     
 
 
