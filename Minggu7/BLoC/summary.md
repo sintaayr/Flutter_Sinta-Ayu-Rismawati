@@ -22,4 +22,4 @@ Cara kerja BLoC :
 3. Menghasilkan state sebagai output
     Dalam BLoC, stream adalah komponen kunci yang digunakan untuk mengalirkan data dari BLoC ke tampilan. Stream adalah aliran data asinkron yang memungkinkan informasi untuk mengalir secara real-time. Ini memungkinkan tampilan untuk merespons perubahan state aplikasi secara dinamis.
 
-Actor utama pada BLoC adalah stream. Ketika event atau aksi tertentu terjadi dalam aplikasi, BLoC akan menghasilkan perubahan state yang akan dikirimkan melalui stream. Tampilan kemudian dapat berlangganan (subscribe) ke stream ini untuk menerima pembaruan state secara real-time.
+Actor utama pada BLoC adalah stream. Ketika event atau aksi tertentu terjadi dalam aplikasi, BLoC akan menghasilkan perubahan state yang akan dikirimkan melalui stream. Tampilan kemudian akan mengikuti stream ini untuk menerima pembaruan state secara real-time.
